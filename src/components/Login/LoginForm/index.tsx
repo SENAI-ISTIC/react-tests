@@ -1,7 +1,9 @@
 import { useAuth } from '@/core/contexts/auth';
-import { Button, PasswordInput, Stack, TextInput } from '@mantine/core';
+import { PasswordInput, Stack, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useState } from 'react';
 import { RiLoginBoxLine } from 'react-icons/ri';
+import Button from "../../_commons/Button"
 
 interface LoginFormValues {
   email: string;
@@ -10,6 +12,8 @@ interface LoginFormValues {
 
 const LoginForm: React.FC = () => {
   const { setSession } = useAuth();
+  const [loading, setLoading] = useState(false)
+
   const form = useForm<LoginFormValues>({
     initialValues: { email: '', password: '' },
     validate: {
@@ -20,20 +24,26 @@ const LoginForm: React.FC = () => {
 
   function handleSubmit(values: LoginFormValues) {
     // TODO: Implementar aqui requisição para autenticar
-    setSession({
-      user: {
-        id: '1',
-        name: 'Nome do usuário',
-        email: values.email,
-      },
-      tokens: {
-        accessToken: '123',
-        refreshToken: '123',
-        tokenType: 'Bearer',
-        expirateAt: 1234578,
-        idToken: null,
-      },
-    });
+    setLoading(true)
+    setTimeout(() => {
+      setSession({
+        user: {
+          id: '1',
+          name: 'Nome do usuário',
+          email: values.email,
+        },
+        tokens: {
+          accessToken: '123',
+          refreshToken: '123',
+          tokenType: 'Bearer',
+          expirateAt: 1234578,
+          idToken: null,
+        },
+      });
+
+      setLoading(false)
+    }, 3000);
+    
   }
 
   return (
@@ -51,7 +61,7 @@ const LoginForm: React.FC = () => {
           {...form.getInputProps('password')}
         />
 
-        <Button leftIcon={<RiLoginBoxLine />} type="submit">
+        <Button isLoading={loading} leftIcon={<RiLoginBoxLine />} type="submit">
           Acessar
         </Button>
       </Stack>
