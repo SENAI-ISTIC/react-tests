@@ -61,7 +61,7 @@ const LoginForm: React.FC = () => {
           {...form.getInputProps('password')}
         />
 
-        <Button isLoading={loading} leftIcon={<RiLoginBoxLine />} type="submit">
+        <Button isloading={loading} leftIcon={<RiLoginBoxLine />} type="submit">
           Acessar
         </Button>
       </Stack>

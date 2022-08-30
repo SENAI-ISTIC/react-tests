@@ -1,17 +1,17 @@
 import { Button, ButtonProps } from '@mantine/core';
 
 interface IProps extends ButtonProps{
-    isLoading?: boolean;
+    isloading?: boolean;
 }
 
 function CustomButton(props: IProps){
     return(
         <Button
             data-testid='button'
-            disabled={props.disabled || props.isLoading}
+            disabled={props.disabled || props.isloading}
             {...props}
         >
-            {props.isLoading ? ('Carregando...') : props.children}
+            {props.isloading ? ('Carregando...') : props.children}
         </Button>
     )
 }
