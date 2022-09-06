@@ -52,16 +52,22 @@ const LoginForm: React.FC = () => {
         <TextInput
           name="email"
           label="E-mail"
+          data-test-id="email-input"
           {...form.getInputProps('email')}
         />
 
         <PasswordInput
           name="password"
           label="Senha"
+          data-test-id="password-input"
           {...form.getInputProps('password')}
         />
 
-        <Button isloading={loading} leftIcon={<RiLoginBoxLine />} type="submit">
+        <Button 
+          isloading={loading} 
+          leftIcon={<RiLoginBoxLine />} 
+          type="submit"
+        >
           Acessar
         </Button>
       </Stack>

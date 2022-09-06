@@ -28,6 +28,7 @@ const RepositoryList: React.FC = () => {
           <Stack align="flex-start">
             <TextInput
               label="Filtrar usuário"
+              data-test-id="user-input"
               defaultValue={user}
               onChange={({ currentTarget }) => {
                 setUser(currentTarget.value);

@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
 
       <Text>Clique em acessar par ir para a tela de login de exemplo</Text>
 
-      <Button component={Link} to="/login">
+      <Button data-test-id='login-button' component={Link} to="/login">
         Acessar
       </Button>
     </Stack>
