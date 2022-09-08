@@ -35,24 +35,27 @@ const RepositoryList: React.FC = () => {
               }}
             />
 
-            {!repos?.length && <Text>Não há repositórios</Text>}
+            <div data-test-id="list-container">
+              {!repos?.length && <Text>Não há repositórios</Text>}
 
-            {repos?.map((repo) => (
-              <Card<'a'>
-                key={repo.id}
-                component="a"
-                href={repo.html_url}
-                sx={{
-                  ':hover': { opacity: 0.7 },
-                  minWidth: '50%',
-                  maxWidth: '50%',
-                }}
-                target="_blank"
-              >
-                <Title order={2}>{repo.name}</Title>
-                <Text>{repo.description}</Text>
-              </Card>
-            ))}
+              {repos?.map((repo) => (
+                <Card<'a'>
+                  key={repo.id}
+                  component="a"
+                  href={repo.html_url}
+                  sx={{
+                    ':hover': { opacity: 0.7 },
+                    minWidth: '50%',
+                    maxWidth: '50%',
+                  }}
+                  target="_blank"
+                >
+                  <Title order={2}>{repo.name}</Title>
+                  <Text>{repo.description}</Text>
+                </Card>
+              ))}
+            </div>
+            
           </Stack>
         </Skeleton>
       </Box>

@@ -28,33 +28,36 @@ const FollowerList: React.FC = () => {
           <TextInput
             label="Filtrar usuário"
             defaultValue={user}
+            data-test-id="user-input"
             onChange={({ currentTarget }) => {
               setUser(currentTarget.value);
             }}
           />
 
-          {!followers?.length && <Text>Não há seguidores</Text>}
+          <div data-test-id="list-container">
+            {!followers?.length && <Text>Não há seguidores</Text>}
+            
+            {followers?.map((repo) => (
+              <Card<'a'>
+                key={repo.id}
+                component="a"
+                href={repo.html_url}
+                sx={{
+                  ':hover': { opacity: 0.7 },
+                  minWidth: '50%',
+                  maxWidth: '50%',
+                }}
+                target="_blank"
+              >
+                <Group noWrap mb="xl">
+                  <Avatar src={repo.avatar_url} />
 
-          {followers?.map((repo) => (
-            <Card<'a'>
-              key={repo.id}
-              component="a"
-              href={repo.html_url}
-              sx={{
-                ':hover': { opacity: 0.7 },
-                minWidth: '50%',
-                maxWidth: '50%',
-              }}
-              target="_blank"
-            >
-              <Group noWrap mb="xl">
-                <Avatar src={repo.avatar_url} />
-
-                <Title order={2}>{repo.login}</Title>
-              </Group>
-              <Text lineClamp={1}>{repo.url}</Text>
-            </Card>
-          ))}
+                  <Title order={2}>{repo.login}</Title>
+                </Group>
+                <Text lineClamp={1}>{repo.url}</Text>
+              </Card>
+            ))}
+          </div>
         </Stack>
       </Skeleton>
     </Box>

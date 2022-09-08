@@ -1,4 +1,5 @@
 import { RouteParams } from '@/core/routes/types';
+import { stringFormater } from '@/core/utils';
 import { Navbar, UnstyledButton, Group, Text } from '@mantine/core';
 import { useLocation, useNavigate } from 'react-router';
 import { useRoutes } from 'react-router-context';
@@ -19,6 +20,7 @@ const PrivateNav: React.FC = () => {
           const path = `/app/${route.path}`;
           return (
             <UnstyledButton
+              data-test-id={`${stringFormater(route.params?.title)}`}
               key={path}
               onClick={() => navigate(path)}
               p="md"
