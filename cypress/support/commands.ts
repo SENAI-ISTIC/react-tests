@@ -1,8 +1,12 @@
 const frontURL = "http://localhost:3000"
 const githubURL = "https://api.github.com"
 
+interface IAppLoginParams {
+    email: string;
+    password: string;
+}
 
-Cypress.Commands.add("appLogin", (login: any) =>{
+Cypress.Commands.add("appLogin", (login: IAppLoginParams) =>{
     cy.visit(`${frontURL}/`)
     console.log(login)
     cy.get("[data-test-id='login-button']").click()
