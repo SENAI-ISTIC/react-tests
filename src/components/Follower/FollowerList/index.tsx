@@ -16,7 +16,6 @@ const FollowerList: React.FC = () => {
   const [user, setUser] = useDebouncedState('SENAI-ISTIC', 1000);
 
   const { data: followers, isLoading } = useFollowerList(user);
-
   return (
     <Box style={{ minWidth: 400 }}>
       <Skeleton
@@ -34,7 +33,7 @@ const FollowerList: React.FC = () => {
             }}
           />
 
-          <div data-test-id="list-container">
+          <div data-testid="list-container">
             {!followers?.length && <Text>Não há seguidores</Text>}
             
             {followers?.map((repo) => (
