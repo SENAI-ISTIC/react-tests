@@ -21,11 +21,11 @@ describe('Repositories', () => {
   it('should not be able to no list repositories of a inexistent user', () => {  
     cy.get("[data-test-id='repositorios']").click()
 
-    cy.intercept('https://api.github.com/users/usuario-teste-inexistente/followers').as('getFollowers')
+    cy.intercept('https://api.github.com/users/usuario-teste-inexistente/repos').as('getRepository')
 
     cy.get("[data-test-id='user-input']").clear()
     cy.get("[data-test-id='user-input']").type("usuario-teste-inexistente")
-    cy.wait('@getFollowers').then((interception) => {
+    cy.wait('@getRepository').then((interception) => {
       cy.get("[data-test-id='list-container']").contains('Não há repositórios').should("be.visible")
     })
   })

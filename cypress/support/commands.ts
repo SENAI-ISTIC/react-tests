@@ -8,7 +8,6 @@ interface IAppLoginParams {
 
 Cypress.Commands.add("appLogin", (login: IAppLoginParams) =>{
     cy.visit(`${frontURL}/`)
-    console.log(login)
     cy.get("[data-test-id='login-button']").click()
     
     cy.get("[data-test-id='email-input']").type(login.email)
