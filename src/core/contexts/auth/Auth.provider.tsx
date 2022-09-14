@@ -27,7 +27,6 @@ const AuthProvider: React.FC<AuthProviderProps> = (props) => {
     if (props.storage?.set && !props.storage?.get) {
       throw new Error(STORAGE_ERROR_MESSAGE);
     }
-
     if (props.storage?.set) {
       props.storage.set(session);
     } else {
