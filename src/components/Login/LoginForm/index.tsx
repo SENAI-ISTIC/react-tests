@@ -25,7 +25,6 @@ const LoginForm: React.FC = () => {
   function handleSubmit(values: LoginFormValues) {
     // TODO: Implementar aqui requisição para autenticar
     setLoading(true)
-    setTimeout(() => {
       setSession({
         user: {
           id: '1',
@@ -41,9 +40,7 @@ const LoginForm: React.FC = () => {
         },
       });
 
-      setLoading(false)
-    }, 3000);
-    
+      setLoading(false)    
   }
 
   return (
@@ -53,6 +50,7 @@ const LoginForm: React.FC = () => {
           name="email"
           label="E-mail"
           data-test-id="email-input"
+          data-testid="email-input"
           {...form.getInputProps('email')}
         />
 
@@ -60,6 +58,7 @@ const LoginForm: React.FC = () => {
           name="password"
           label="Senha"
           data-test-id="password-input"
+          data-testid="password-input"
           {...form.getInputProps('password')}
         />
 
@@ -67,6 +66,7 @@ const LoginForm: React.FC = () => {
           isloading={loading} 
           leftIcon={<RiLoginBoxLine />} 
           type="submit"
+          data-testid="access-button"
         >
           Acessar
         </Button>
